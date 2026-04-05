@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ArrowLeft, CheckCircle } from "lucide-react"
+import { LeadCaptureForm } from "@/components/lead-capture-form"
 
 const questions = [
   {
@@ -91,10 +92,12 @@ export function QualificationForm() {
               Based on your answers, you could be eligible for $50K–$100K+ in funding. 
               Book a call with our team to review your personalized funding strategy.
             </p>
-            <Button size="lg" className="h-12 w-full px-6 text-base font-semibold shadow-lg shadow-primary/25 sm:h-14 sm:w-auto sm:px-8 sm:text-lg">
-              Book Your Strategy Call
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <LeadCaptureForm title="Book Your Strategy Call" description="Enter your information and we'll redirect you to schedule your personalized funding strategy call.">
+              <Button size="lg" className="h-12 w-full px-6 text-base font-semibold shadow-lg shadow-primary/25 sm:h-14 sm:w-auto sm:px-8 sm:text-lg">
+                Book Your Strategy Call
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </LeadCaptureForm>
             <p className="mt-4 text-xs text-muted-foreground">
               No obligation. We&apos;ll review your profile and discuss your options.
             </p>

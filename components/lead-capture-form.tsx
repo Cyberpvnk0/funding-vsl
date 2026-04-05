@@ -71,17 +71,10 @@ export function LeadCaptureForm({
 
       setIsSuccess(true)
       
-      // Reset form after success
+      // Redirect to booking page after brief success message
       setTimeout(() => {
-        setOpen(false)
-        setIsSuccess(false)
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-        })
-      }, 2500)
+        window.location.href = "https://api.leadconnectorhq.com/widget/booking/4f8jgetY27k8HeOkdxhb"
+      }, 1500)
     } catch {
       setError("Something went wrong. Please try again.")
     } finally {
@@ -105,7 +98,7 @@ export function LeadCaptureForm({
             <CheckCircle className="h-16 w-16 text-green-500 mb-4" />
             <h3 className="text-xl font-semibold text-foreground mb-2">Thank You!</h3>
             <p className="text-muted-foreground">
-              We&apos;ve received your information. A funding specialist will be in touch shortly.
+              Redirecting you to book your strategy call...
             </p>
           </div>
         ) : (
