@@ -92,7 +92,7 @@ export function LeadCaptureForm({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        {children}
+        <span className="w-full cursor-pointer">{children}</span>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
