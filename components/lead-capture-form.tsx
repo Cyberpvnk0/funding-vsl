@@ -61,6 +61,7 @@ export function LeadCaptureForm({
             email: formData.email,
             phone: formData.phone,
             source: "Funding VSL Website",
+            lead_type: "funding",
           }),
         }
       )
