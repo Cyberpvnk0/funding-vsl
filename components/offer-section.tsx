@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Check, Zap, ArrowRight, Shield, DollarSign, Briefcase } from "lucide-react"
+import { LeadCaptureForm } from "@/components/lead-capture-form"
 
 const personalFundingFeatures = [
   "Access to 0% intro APR cards",
@@ -53,10 +54,12 @@ export function OfferSection() {
               </p>
             </div>
 
-            <Button className="mb-6 h-11 w-full text-base font-semibold sm:mb-8 sm:h-12" variant="outline">
-              Check Your Approval Amount
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <LeadCaptureForm title="Check Your Personal Funding Approval" description="Enter your information to see how much personal funding you may qualify for.">
+              <Button className="mb-6 h-11 w-full text-base font-semibold sm:mb-8 sm:h-12" variant="outline">
+                Check Your Approval Amount
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </LeadCaptureForm>
 
             <ul className="space-y-3 sm:space-y-4">
               {personalFundingFeatures.map((feature, index) => (
@@ -98,10 +101,12 @@ export function OfferSection() {
               </p>
             </div>
 
-            <Button className="mb-6 h-11 w-full text-base font-semibold shadow-lg shadow-primary/25 sm:mb-8 sm:h-12">
-              See Your Business Potential
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <LeadCaptureForm title="Unlock Your Business Funding Potential" description="Enter your information to see how much business funding you may qualify for.">
+              <Button className="mb-6 h-11 w-full text-base font-semibold shadow-lg shadow-primary/25 sm:mb-8 sm:h-12">
+                See Your Business Potential
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </LeadCaptureForm>
 
             <ul className="space-y-3 sm:space-y-4">
               {businessFundingFeatures.map((feature, index) => (
