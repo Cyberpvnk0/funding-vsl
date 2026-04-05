@@ -65,7 +65,7 @@ export function HeroSection() {
 
           {/* Secondary link */}
           <Link 
-            href="https://www.google.com"
+            href="https://v0-credit-repair-vsl.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
