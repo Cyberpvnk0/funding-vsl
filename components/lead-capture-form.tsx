@@ -49,7 +49,7 @@ export function LeadCaptureForm({
 
     try {
       const response = await fetch(
-        "https://services.leadconnectorhq.com/hooks/sHcfjYFcKaywNxchTSIJ/webhook-trigger/16ebf30d-bdc5-447a-bb62-160d77f3a8f8",
+        "https://services.leadconnectorhq.com/hooks/sHcfjYFcKaywNxchTSIJ/webhook-trigger/yVZe9FnrG5CZmeLmbC2x",
         {
           method: "POST",
           headers: {
@@ -60,9 +60,7 @@ export function LeadCaptureForm({
             lastName: formData.lastName,
             email: formData.email,
             phone: formData.phone,
-            source: "Funding VSL Website",
-            lead_type: "funding",
-            tags: ["funding-lead"],
+            plan: "funding",
           }),
         }
       )
