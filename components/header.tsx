@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
+import { LeadCaptureForm } from "@/components/lead-capture-form"
 
 const navLinks = [
   { href: "#pricing", label: "Funding Options" },
@@ -45,7 +46,9 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button>See Your Funding Options</Button>
+            <LeadCaptureForm>
+              <Button>See Your Funding Options</Button>
+            </LeadCaptureForm>
           </div>
 
           {/* Mobile menu button */}
@@ -76,7 +79,9 @@ export function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Button className="mt-2 w-full">See Your Funding Options</Button>
+              <LeadCaptureForm>
+                <Button className="mt-2 w-full">See Your Funding Options</Button>
+              </LeadCaptureForm>
             </nav>
           </div>
         )}
