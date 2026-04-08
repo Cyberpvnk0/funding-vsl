@@ -1,11 +1,22 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Play } from "lucide-react"
+import { ArrowRight, Volume2 } from "lucide-react"
 import Link from "next/link"
 import { LeadCaptureForm } from "@/components/lead-capture-form"
+import { useState, useRef } from "react"
 
 export function HeroSection() {
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const handleUnmute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = false
+      setIsMuted(false)
+    }
+  }
+
   return (
     <section className="relative overflow-hidden bg-background py-12 sm:py-20 lg:py-32">
       {/* Subtle background gradient */}
@@ -33,21 +44,31 @@ export function HeroSection() {
             applications strategically, and helps you secure the capital you deserve.
           </p>
 
-          {/* VSL Video Placeholder */}
+          {/* VSL Video */}
           <div className="mt-8 w-full max-w-3xl sm:mt-10">
             <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card shadow-xl sm:rounded-2xl">
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
-                <button 
-                  className="group flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-lg transition-transform hover:scale-105 sm:h-20 sm:w-20"
-                  aria-label="Play video"
+              <video
+                ref={videoRef}
+                src="https://skvbbutsm9icmpfr.private.blob.vercel-storage.com/0404%20%283%29%288%29%20%281%29.mov"
+                className="h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+              {isMuted && (
+                <div 
+                  className="absolute inset-0 flex cursor-pointer items-center justify-center"
+                  onClick={handleUnmute}
                 >
-                  <Play className="h-6 w-6 fill-primary-foreground text-primary-foreground transition-transform group-hover:scale-110 sm:h-8 sm:w-8" />
-                </button>
-              </div>
-              <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between rounded-lg bg-card/90 px-3 py-2 backdrop-blur-sm sm:bottom-4 sm:left-4 sm:right-4 sm:px-4 sm:py-3">
-                <span className="text-xs font-medium text-foreground sm:text-sm">Watch: How to Access $50K–$100K+ in Funding</span>
-                <span className="text-xs text-muted-foreground">4:12</span>
-              </div>
+                  <button 
+                    className="group flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg transition-transform hover:scale-105 sm:h-28 sm:w-28"
+                    aria-label="Unmute video"
+                  >
+                    <Volume2 className="h-8 w-8 text-primary-foreground transition-transform group-hover:scale-110 sm:h-12 sm:w-12" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
