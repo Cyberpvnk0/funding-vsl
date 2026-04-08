@@ -49,7 +49,7 @@ export function HeroSection() {
             <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card shadow-xl sm:rounded-2xl">
               <video
                 ref={videoRef}
-                src="https://skvbbutsm9icmpfr.private.blob.vercel-storage.com/0404%20%283%29%288%29%20%281%29.mov"
+                src="/api/video"
                 className="h-full w-full object-cover"
                 autoPlay
                 muted
