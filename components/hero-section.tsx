@@ -1,38 +1,20 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Volume2, VolumeX, Loader2 } from "lucide-react"
+import { ArrowRight, Volume2 } from "lucide-react"
 import Link from "next/link"
 import { LeadCaptureForm } from "@/components/lead-capture-form"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 
 export function HeroSection() {
   const [isMuted, setIsMuted] = useState(true)
-  const [isLoading, setIsLoading] = useState(true)
-  const [videoUrl, setVideoUrl] = useState<string | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  useEffect(() => {
-    // Fetch the signed URL for the video
-    fetch('/api/video', { redirect: 'follow' })
-      .then(res => {
-        if (res.redirected) {
-          setVideoUrl(res.url)
-        }
-      })
-      .catch(err => console.error('Error fetching video URL:', err))
-  }, [])
-
-  const handleToggleMute = () => {
+  const handleUnmute = () => {
     if (videoRef.current) {
-      const newMutedState = !isMuted
-      videoRef.current.muted = newMutedState
-      setIsMuted(newMutedState)
+      videoRef.current.muted = false
+      setIsMuted(false)
     }
-  }
-
-  const handleVideoLoaded = () => {
-    setIsLoading(false)
   }
 
   return (
@@ -65,47 +47,21 @@ export function HeroSection() {
           {/* VSL Video */}
           <div className="mt-8 w-full max-w-3xl sm:mt-10">
             <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card shadow-xl sm:rounded-2xl">
-              {/* Loading state */}
-              {isLoading && (
-                <div className="absolute inset-0 z-10 flex items-center justify-center bg-muted">
-                  <Loader2 className="h-12 w-12 animate-spin text-primary" />
-                </div>
-              )}
-              
-              {videoUrl && (
-                <video
-                  ref={videoRef}
-                  src={videoUrl}
-                  className="h-full w-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  onLoadedData={handleVideoLoaded}
-                  onCanPlay={handleVideoLoaded}
-                />
-              )}
-              
-              {/* Mute/Unmute button - always visible in corner */}
-              {!isLoading && (
-                <button 
-                  className="absolute bottom-4 right-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/70 text-white shadow-lg transition-transform hover:scale-105 sm:h-14 sm:w-14"
-                  onClick={handleToggleMute}
-                  aria-label={isMuted ? "Unmute video" : "Mute video"}
-                >
-                  {isMuted ? (
-                    <VolumeX className="h-5 w-5 sm:h-6 sm:w-6" />
-                  ) : (
-                    <Volume2 className="h-5 w-5 sm:h-6 sm:w-6" />
-                  )}
-                </button>
-              )}
+              <video
+                ref={videoRef}
+                src="/api/video"
+                className="h-full w-full object-cover"
+                autoPlay
+                muted
+                playsInline
+                controls
+              />
               
               {/* Large center unmute prompt - only shown when muted */}
-              {!isLoading && isMuted && (
+              {isMuted && (
                 <div 
-                  className="absolute inset-0 flex cursor-pointer items-center justify-center"
-                  onClick={handleToggleMute}
+                  className="absolute inset-0 flex cursor-pointer items-center justify-center bg-black/10"
+                  onClick={handleUnmute}
                 >
                   <div className="group flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg transition-transform hover:scale-105 sm:h-28 sm:w-28">
                     <Volume2 className="h-8 w-8 text-primary-foreground transition-transform group-hover:scale-110 sm:h-12 sm:w-12" />
