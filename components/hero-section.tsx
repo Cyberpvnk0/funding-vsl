@@ -89,9 +89,7 @@ export function HeroSection() {
 
           {/* Secondary link */}
           <Link 
-            href="https://v0-credit-repair-vsl.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/credit-repair"
             className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
           >
             Need to improve your credit first? Start here
